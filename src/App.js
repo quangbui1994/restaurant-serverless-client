@@ -21,7 +21,7 @@ const App = (props) => {
   useEffect(() => {
     window.addEventListener('scroll', listenToScroll);
     onLoad();
-  }, [userAuthenticated]);
+  }, []);
 
   const onLoad = async () => {
     try {
