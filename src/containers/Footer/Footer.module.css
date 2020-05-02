@@ -1,0 +1,29 @@
+.Footer {
+    position: absolute;
+    height: 20rem;
+    background-color: #c69963;
+    bottom: 0;
+    z-index: 2;
+    width: 100.5vw;
+    left: -13%;
+    margin-top: 20rem;
+    display: flex;
+    padding: 5% 20%;
+    align-items: center;
+}
+
+.footer__info {
+    display: flex;
+    width: 75%;
+}
+
+.footer__logo {
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.footer__logo img {
+    width: 8rem;
+}

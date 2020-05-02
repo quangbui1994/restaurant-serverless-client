@@ -1,0 +1,21 @@
+.FooterColumns {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+    color: floralwhite;
+}
+
+.FooterColumns li {
+    font-size: 1.3rem;
+    margin-bottom: 5px;
+    color: rgba(255, 250, 240, 0.637);
+}
+
+.FooterColumns li:hover {
+    color: floralwhite;
+}

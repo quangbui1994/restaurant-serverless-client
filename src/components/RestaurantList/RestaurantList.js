@@ -98,6 +98,7 @@ const RestaurantList = () => {
 
     return (
         <>
+            <div className="heading"><span>Get your Foods</span></div>
             <Filter sortAlphabetically={toggleSortAlphabetically} searchRestaurant={searchRestaurant}/>
             <div className='RestaurantList'>
                 {

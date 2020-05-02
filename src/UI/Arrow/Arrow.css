@@ -19,7 +19,7 @@
     transform: translateY(1rem);
 }
 
-span {
+.round span {
     z-index: 999;
     height: 2px;
     margin: 0.5px;
@@ -28,7 +28,7 @@ span {
     transition: 0.4s ease;
 }
 
-span:first-child {
+.round span:first-child {
     display: block;
     position: absolute;
     transform: rotate(45deg);
@@ -36,7 +36,7 @@ span:first-child {
     bottom: 35%;
 }
 
-span:nth-child(2) {
+.round span:nth-child(2) {
     display: block;
     position: absolute;
     transform: rotate(-45deg);
@@ -44,7 +44,7 @@ span:nth-child(2) {
     bottom: 35%;
 }
 
-span:nth-child(3) {
+.round span:nth-child(3) {
     display: block;
     position: absolute;
     transform: rotate(45deg);
@@ -52,7 +52,7 @@ span:nth-child(3) {
     bottom: 54%;
 }
 
-span:nth-child(4) {
+.round span:nth-child(4) {
     display: block;
     position: absolute;
     transform: rotate(-45deg);
