@@ -98,7 +98,7 @@ const tileData = [
 
 const Gallery = () => {
     const classes = useStyles();
-    
+
     return (
         <div className={styles.Gallery}>
             <div className="heading"><span>Our Gallery</span></div>

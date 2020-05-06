@@ -10,7 +10,6 @@ import UnauthenticatedRoute from './libs/UnauthenticatedRoute';
 import AuthenticatedRoute from './libs/AuthenticatedRoute';
 
 const App = (props) => {
-  const [changeNavBar, setChangeNavBar] = useState(false);
   const [userAuthenticated, setUserAuthenticated] = useState(false);
 
   const appProps = {
@@ -19,7 +18,6 @@ const App = (props) => {
   };
 
   useEffect(() => {
-    window.addEventListener('scroll', listenToScroll);
     onLoad();
   }, [setUserAuthenticated]);
 
@@ -33,16 +31,6 @@ const App = (props) => {
     }
   }
 
-  const listenToScroll = () => {
-    const winScroll = document.documentElement.scrollTop;
-  
-    if (winScroll > window.innerHeight) {
-      return setChangeNavBar(true);
-    };
-
-    return setChangeNavBar(false);
-  }
-
    const logoutHandler = async () => {
     await Auth.signOut();
     setUserAuthenticated(false);
@@ -52,7 +40,7 @@ const App = (props) => {
 
   return (
     <div className='App'>
-      <Navbar logoutHandler={logoutHandler} userAuthenticated={userAuthenticated} changedNavBar={changeNavBar}/>
+      <Navbar logoutHandler={logoutHandler} userAuthenticated={userAuthenticated}/>
       <Switch>
         <AuthenticatedRoute path="/" exact component={Home} appProps={appProps}/>
         <UnauthenticatedRoute path="/login" exact component={LogIn} appProps={appProps}/>

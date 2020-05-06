@@ -16,7 +16,6 @@ const RestaurantList = () => {
     const [error, setError] = useState(false);
 
     // const restaurants = updateRestaurantList(data.restaurants, userRestaurants);
-
     useEffect(() => {
         getRestaurants();
     }, []);

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styles from './Filter.module.css';
-import { Button } from '@material-ui/core';
 import TextField from '../TextField/TextField';
 
 const Filter = ({ sortAlphabetically, searchRestaurant }) => {

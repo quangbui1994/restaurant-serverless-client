@@ -6,8 +6,8 @@ const FooterColumns = ({ heading, links}) => (
         <div className={styles.heading}>{heading}</div>
         <ul>
             {
-                links.map(link => (
-                    <li><a href="">{link}</a></li>
+                links.map((link, i)=> (
+                    <li key={i}><a href="#">{link}</a></li>
                 ))
             }
         </ul>     
