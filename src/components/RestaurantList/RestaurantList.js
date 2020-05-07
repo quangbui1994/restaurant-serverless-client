@@ -7,8 +7,8 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import { v1 } from 'uuid';
 import { useEffect } from 'react';
 import { API } from 'aws-amplify';
-import MemorizedRestaurantItem from './RestaurantItem/MemorizedRestaurantItem';
 import { useCallback } from 'react';
+import RestaurantItem from './RestaurantItem/RestaurantItem';
 
 const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState(data.restaurants.slice(0,6));
@@ -102,7 +102,7 @@ const RestaurantList = () => {
             <div className='RestaurantList'>
                 {
                     restaurants.map((restaurant, i) => {
-                        return <MemorizedRestaurantItem
+                        return <RestaurantItem
                                     addUserList={addUserList}
                                     removeUserList={removeUserList}
                                     like={restaurant.like}
@@ -112,7 +112,8 @@ const RestaurantList = () => {
                                     city={restaurant.city} 
                                     image={restaurant.image} 
                                     tags={restaurant.tags} 
-                                    currency={restaurant.currency}/>
+                                    currency={restaurant.currency}
+                                    location={restaurant.location}/>
                     })
                 }
             </div>

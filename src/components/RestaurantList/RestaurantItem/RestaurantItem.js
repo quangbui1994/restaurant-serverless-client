@@ -2,11 +2,14 @@ import React from 'react';
 import styles from './RestaurantItem.module.css';
 import { useState } from 'react';
 import { API } from 'aws-amplify';
+import { useRef } from 'react';
 
-const RestaurantItem = ({ name, city, image, tags, currency, like, addUserList, removeUserList }) => {
+const RestaurantItem = ({ name, city, image, tags, currency, like, addUserList, removeUserList, location }) => {
     const [likeStatus, setLikeStatus] = useState(like);
     const [id, setId] = useState('');
 
+    const restaurantName = useRef();
+    console.log('re');
     const handleLikeRestaurant = async () => {
         if (!likeStatus) {
             try {
@@ -33,12 +36,12 @@ const RestaurantItem = ({ name, city, image, tags, currency, like, addUserList, 
     }
 
     return(    
-        <div className={styles.RestaurantItem} onClick={() => handleLikeRestaurant()}>
+        <div className={styles.RestaurantItem}>
             <div className={styles.coverPhoto} style={{ backgroundImage: `url(${image})` }}/>
             <div className={styles.restaurantName}>
-                <div className={styles.name}>{name}</div>
+                <div ref={restaurantName} className={styles.name}>{name}</div>
                 <div className={styles.city}>{city}</div>
-                <div className={styles.likeIcon}>
+                <div className={styles.likeIcon} onClick={handleLikeRestaurant}>
                     {likeStatus ? <ion-icon name="heart"></ion-icon> : <ion-icon name="heart-outline"></ion-icon> }
                 </div> 
             </div>
@@ -54,4 +57,4 @@ const RestaurantItem = ({ name, city, image, tags, currency, like, addUserList, 
     )
 };
 
-export default RestaurantItem;
+export default React.memo(RestaurantItem);
