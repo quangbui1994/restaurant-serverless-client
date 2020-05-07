@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import data from '../../restaurants';
-import RestaurantItem from './RestaurantItem/RestaurantItem';
 import './RestaurantList.css';
 import Filter from '../Filter/Filter';
 import Arrow from '../../UI/Arrow/Arrow';
@@ -8,6 +7,8 @@ import NotFoundPage from '../NotFoundPage/NotFoundPage';
 import { v1 } from 'uuid';
 import { useEffect } from 'react';
 import { API } from 'aws-amplify';
+import MemorizedRestaurantItem from './RestaurantItem/MemorizedRestaurantItem';
+import { useCallback } from 'react';
 
 const RestaurantList = () => {
     const [restaurants, setRestaurants] = useState(data.restaurants.slice(0,6));
@@ -80,20 +81,19 @@ const RestaurantList = () => {
         setRestaurants(getRestaurants);
     }
 
-    const addUserList = (name, id) => {
+    const addUserList = useCallback((name, id) => {
         const addedRestaurant = {
             ...restaurants.find(el => el.name === name),
             id,
             like: true
         }
-        console.log(userRestaurants);
         const updatedUserRestaurants = userRestaurants.concat(addedRestaurant);
         setUserRestaurants(updatedUserRestaurants);
-    }
+    }, []);
 
-    const removeUserList = name => {
+    const removeUserList = useCallback(name => {
         userRestaurants.filter(restaurants => restaurants.name !== name);
-    }
+    }, []);
 
     return (
         <>
@@ -101,13 +101,13 @@ const RestaurantList = () => {
             <Filter sortAlphabetically={toggleSortAlphabetically} searchRestaurant={searchRestaurant}/>
             <div className='RestaurantList'>
                 {
-                    restaurants.map(restaurant => {
-                        return <RestaurantItem
+                    restaurants.map((restaurant, i) => {
+                        return <MemorizedRestaurantItem
                                     addUserList={addUserList}
                                     removeUserList={removeUserList}
                                     like={restaurant.like}
                                     id={restaurant.id}
-                                    key={v1()}
+                                    key={i}
                                     name={restaurant.name} 
                                     city={restaurant.city} 
                                     image={restaurant.image} 

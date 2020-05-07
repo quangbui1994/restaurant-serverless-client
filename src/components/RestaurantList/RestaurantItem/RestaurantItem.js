@@ -18,7 +18,6 @@ const RestaurantItem = ({ name, city, image, tags, currency, like, addUserList, 
                 });
                 setId(restaurant.restaurantId);
 
-                // addUserList(name, id);
             } catch (e) {
                 console.log(e.message);
             }
