@@ -34,14 +34,15 @@ const Singup = (props) => {
         }
     }
 
-    const handleVerify = async () => {
+    const handleVerify = async e => {
+        e.preventDefault();
         setIsAuthenticating(true);
         try {
             await Auth.confirmSignUp(fields.email, fields.confirmCode);
             await Auth.signIn(fields.email, fields.password);
-
+            props.setUserAuthenticated(true);
             setIsAuthenticating(false);
-            props.history.push('/');
+            // props.history.push('/');
         } catch (e) {
             console.log(e.message);
             setIsAuthenticating(false);
