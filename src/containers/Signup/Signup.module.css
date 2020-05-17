@@ -32,7 +32,7 @@
     outline: none;
 }
 
-.Signup label {
+.Signup label, .Verify label {
     display: block;
     margin-bottom: 1rem;
     padding-left: .5rem;
