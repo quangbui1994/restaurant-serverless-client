@@ -42,9 +42,8 @@ const Singup = (props) => {
             await Auth.signIn(fields.email, fields.password);
             props.setUserAuthenticated(true);
             setIsAuthenticating(false);
-            // props.history.push('/');
         } catch (e) {
-            console.log(e.message);
+            setError(errorMessageHandler(e.message));
             setIsAuthenticating(false);
         }
     }
@@ -109,6 +108,7 @@ const Singup = (props) => {
                 {/* <Spinner /> */}
                 Submit
             </button>
+            {error ? <div className={styles.errorMessage}>{error}</div> : null}
         </form>
     )
 
